@@ -1994,3 +1994,20 @@ MonoBehaviour:
   - {fileID: 1142797516}
   - {fileID: 401906450}
   - {fileID: 1610854605}
+  drawCubePoints:
+  - {fileID: 1363650052}
+  - {fileID: 1930142152}
+  - {fileID: 2027286079}
+  - {fileID: 1271580742}
+  - {fileID: 1363650052}
+  - {fileID: 1142797516}
+  - {fileID: 1610854605}
+  - {fileID: 401906450}
+  - {fileID: 2027286079}
+  - {fileID: 1930142152}
+  - {fileID: 909282208}
+  - {fileID: 401906450}
+  - {fileID: 909282208}
+  - {fileID: 1142797516}
+  - {fileID: 1610854605}
+  - {fileID: 1271580742}

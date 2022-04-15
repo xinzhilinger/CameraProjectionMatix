@@ -16,6 +16,9 @@ public class CameraDemo : MonoBehaviour
     public Transform[] projectionPoints;
     // Start is called before the first frame update
 
+    public Transform[] drawCubePoints;
+
+
     private void Start()
     {
         //cam.fieldOfView = 90;
@@ -25,11 +28,26 @@ public class CameraDemo : MonoBehaviour
             startPoints[i].position = lists[i];
             Vector3 targetPos = GetCameraPos(lists[i]);
             Debug.Log($"第{i}个数为：{GetCameraPos(lists[i])}");
+
             Vector4 resultProjection = GetProjectionPos(GetCameraPos(lists[i]));
             float value = resultProjection.z > 0 ? resultProjection.z : -resultProjection.z;
-            projectionPoints[i].position = resultProjection / value;
 
+            projectionPoints[i].position = resultProjection / value;
             Debug.Log(GetProjectionPos(GetCameraPos(lists[i])));
+
+        }
+    }
+    private void Update()
+    {
+        DrawLine(drawCubePoints);
+    }
+
+
+    void DrawLine(Transform[] points)
+    {
+        for (int i = 1; i < points.Length; i++)
+        {
+            Debug.DrawLine(points[i].position,  points[i - 1].position);
 
         }
     }
@@ -97,6 +115,9 @@ public class CameraDemo : MonoBehaviour
 
 
     }
+
+
+
 
 }
 
