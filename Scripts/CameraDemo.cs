@@ -19,6 +19,9 @@ public class CameraDemo : MonoBehaviour
     public Transform[] drawCubePoints;
 
 
+    public Transform startPos;
+    public Transform endPos;
+
     private void Start()
     {
         //cam.fieldOfView = 90;
@@ -27,19 +30,24 @@ public class CameraDemo : MonoBehaviour
         {
             startPoints[i].position = lists[i];
             Vector3 targetPos = GetCameraPos(lists[i]);
-            Debug.Log($"第{i}个数为：{GetCameraPos(lists[i])}");
 
             Vector4 resultProjection = GetProjectionPos(GetCameraPos(lists[i]));
-            float value = resultProjection.z > 0 ? resultProjection.z : -resultProjection.z;
-
+            float value = resultProjection.w > 0 ? resultProjection.w : -resultProjection.w;
             projectionPoints[i].position = resultProjection / value;
-            Debug.Log(GetProjectionPos(GetCameraPos(lists[i])));
 
         }
     }
     private void Update()
     {
         DrawLine(drawCubePoints);
+        Vector4 resultProjection = GetProjectionPos(GetCameraPos(startPos.position));
+        float value = resultProjection.w > 0 ? resultProjection.w : -resultProjection.w;
+        if(value!=0)
+        {
+
+            endPos.position = new Vector3(resultProjection.x / value, resultProjection.y / value, resultProjection.z / value);
+                Debug.Log(resultProjection);
+        }
     }
 
 
