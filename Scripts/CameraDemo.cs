@@ -30,10 +30,12 @@ public class CameraDemo : MonoBehaviour
         {
             startPoints[i].position = lists[i];
             Vector3 targetPos = GetCameraPos(lists[i]);
-
+          
             Vector4 resultProjection = GetProjectionPos(GetCameraPos(lists[i]));
-            float value = resultProjection.w > 0 ? resultProjection.w : -resultProjection.w;
-            projectionPoints[i].position = resultProjection / value;
+            if(resultProjection.w!=0)
+            {
+                projectionPoints[i].position = resultProjection / resultProjection.w;
+            }
 
         }
     }
@@ -73,7 +75,7 @@ public class CameraDemo : MonoBehaviour
                 }
             }
         }
-      return backList;
+        return backList;
     }
     Vector3 GetPos(int lenType,Vector2Int dirType,Camera cam)
     {
@@ -98,6 +100,7 @@ public class CameraDemo : MonoBehaviour
     {
         // Debug.Log(cameraSpacePos);
         return cam.projectionMatrix * cameraSpacePos;
+
     }
 
 
@@ -124,7 +127,7 @@ public class CameraDemo : MonoBehaviour
 
     }
 
-
+  
 
 
 }
